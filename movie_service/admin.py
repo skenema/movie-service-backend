@@ -1,5 +1,4 @@
 from django.contrib import admin
-from .models import Movies, ShowTimes
+from .models import Movie
 
-admin.site.register(Movies)
-admin.site.register(ShowTimes)
+admin.site.register(Movie)
