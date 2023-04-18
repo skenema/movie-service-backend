@@ -27,6 +27,10 @@ def create_movie(request):
     # TODO: Handle file later
     movie = Movie.objects.create(title=title, cinema=cinema, description=description)
     # thumbnail = request.data['thumbnail']
+
+    # Note: I think movies service might need to send something to reservation service here.
+    # The alternate solution is to allow create showtime independently but that is not consistent.
+    # - Pontakorn Paesaeng
     return Response({
         "id": movie.id,
         "title": movie.title,
