@@ -25,6 +25,9 @@ def create_movie(request):
     cinema = request.data['cinema']
     description = request.data['description']
     # TODO: Handle file later
+    # Please also note lack of validation here.
+    # We don't have logic to validate anything yet
+    # - Pontakorn Paesaeng
     movie = Movie.objects.create(title=title, cinema=cinema, description=description)
     # thumbnail = request.data['thumbnail']
 
