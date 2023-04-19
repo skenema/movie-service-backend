@@ -15,3 +15,12 @@ def get_movies_detail(request):
                               "cinema": movie.cinema,
                               })
     return Response(movies_detail)
+
+@api_view(['GET'])
+def get_movie_reservation(request, movie_id):
+    movies_object = Movie.objects.get(pk=int(movie_id))
+    response = {"title": movies_object.title,
+                "cinema": movies_object.cinema}
+    return Response(response)
+
+
