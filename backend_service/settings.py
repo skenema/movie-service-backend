@@ -137,8 +137,8 @@ STORAGES = {"default":
                 {"BACKEND": default_storage
                  },
             "staticfiles": {
-                    "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"  # We don't use static file
-                }}
+                "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"  # We don't use static file
+            }}
 
 # AWS
 # Please note that when you use EC2 please attach to IAM role instead
