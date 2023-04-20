@@ -140,8 +140,8 @@ STORAGES = {"default": {"BACKEND": default_storage}}
 # Please note that when you use EC2 please attach to IAM role instead
 # - Pontakorn Paesaeng
 
-AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID") if DEBUG else ""
-AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY") if DEBUG else ""
+AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID") if DEBUG else None
+AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY") if DEBUG else None
 AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
 
 # If it is True, it will expose access key to the public.
