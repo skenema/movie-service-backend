@@ -14,6 +14,7 @@ def get_movies_detail(request):
                               "title": movie.title,
                               "description": movie.description,
                               "cinema": movie.cinema,
+                              "thumbnail": movie.thumbnail if movie.thumbnail else "",
                               })
     return Response(movies_detail)
 
@@ -33,12 +34,11 @@ def create_movie(request):
     title = request.data['title']
     cinema = request.data['cinema']
     description = request.data['description']
-    # TODO: Handle file later
+    thumbnail = request.data.get( 'thumbnail', None )
     # Please also note lack of validation here.
     # We don't have logic to validate anything yet
     # - Pontakorn Paesaeng
-    movie = Movie.objects.create(title=title, cinema=cinema, description=description)
-    # thumbnail = request.data['thumbnail']
+    movie = Movie.objects.create(title=title, cinema=cinema, description=description, thumbnail=thumbnail)
 
     # Note: I think movies service might need to send something to reservation service here.
     # The alternate solution is to allow create showtime independently but that is not consistent.
@@ -47,5 +47,6 @@ def create_movie(request):
         "id": movie.id,
         "title": movie.title,
         "description": movie.description,
-        "cinema": movie.cinema
+        "cinema": movie.cinema,
+        "thumbnail":  movie.thumbnail.url if movie.thumbnail else ""
     })
