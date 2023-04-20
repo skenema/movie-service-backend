@@ -14,6 +14,7 @@ def get_movies_detail(request):
                               "title": movie.title,
                               "description": movie.description,
                               "cinema": movie.cinema,
+                              "thumbnail": movie.thumbnail.url if movie.thumbnail else "",
                               })
     return Response(movies_detail)
 
@@ -33,8 +34,7 @@ def create_movie(request):
     title = request.data['title']
     cinema = request.data['cinema']
     description = request.data['description']
-    thumbnail = request.data['thumbnail']
-    # TODO: Handle file later
+    thumbnail = request.data['thumbnail'] if 'thumbnail' in request.POST else None
     # Please also note lack of validation here.
     # We don't have logic to validate anything yet
     # - Pontakorn Paesaeng
