@@ -133,8 +133,13 @@ elif DEBUG:
 else:
     default_storage = "storages.backends.s3boto3.S3Boto3Storage"
 
-
-STORAGES = {"default": {"BACKEND": default_storage}}
+STORAGES = {"default":
+                {"BACKEND": default_storage
+                 },
+            "staticfiles": {
+                "default": {
+                    "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"  # We don't use static file
+                }}}
 
 # AWS
 # Please note that when you use EC2 please attach to IAM role instead
@@ -149,4 +154,4 @@ AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
 
 # If it is True, it will expose access key to the public.
 # Please do not do that.
-AWS_QUERYSTRING_AUTH=False
+AWS_QUERYSTRING_AUTH = False
