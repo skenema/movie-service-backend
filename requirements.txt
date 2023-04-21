@@ -2,3 +2,10 @@ django
 djangorestframework
 python-decouple
 django-cors-headers
+requests
+mysqlclient
+asgiref
+backports.zoneinfo
+PyJWT
+pytz
+sqlparse
