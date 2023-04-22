@@ -156,7 +156,7 @@ SIMPLE_JWT = {
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTStatelessUserAuthentication'
+        'rest_framework_simplejwt.authentication.JWTStatelessUserAuthentication',
     )
 }
 # Media
