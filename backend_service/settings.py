@@ -39,12 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
+    "corsheaders",
     'movie_service.apps.MovieServiceConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -125,6 +128,10 @@ USE_I18N = True
 USE_TZ = True
 
 
+# This is very dangerous but it is better due to time limit.
+# - Pontakorn Paesaeng
+CORS_ALLOW_ALL_ORIGINS = True
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -143,14 +150,14 @@ SIMPLE_JWT = {
 
     # Also, in case that you fork this, please change it to something more secure.
     # - Pontakorn Paesaeng
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
-    'SIGNING_KEY': config('SIGNING_KEY')
+    'SIGNING_KEY': config('SIGNING_KEY'),
+    'VERIFYING_KEY': config('SIGNING_KEY')
 }
 
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTStatelessUserAuthentication'
+        'rest_framework_simplejwt.authentication.JWTStatelessUserAuthentication',
     )
 }
 # Media
