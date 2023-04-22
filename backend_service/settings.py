@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
     "corsheaders",
     'movie_service.apps.MovieServiceConfig',
 ]
@@ -149,8 +150,8 @@ SIMPLE_JWT = {
 
     # Also, in case that you fork this, please change it to something more secure.
     # - Pontakorn Paesaeng
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
-    'SIGNING_KEY': config('SIGNING_KEY')
+    'SIGNING_KEY': config('SIGNING_KEY'),
+    'VERIFYING_KEY': config('SIGNING_KEY')
 }
 
 
