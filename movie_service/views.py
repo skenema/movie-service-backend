@@ -15,7 +15,7 @@ def get_movies_detail(request):
                               "title": movie.title,
                               "description": movie.description,
                               "cinema": movie.cinema,
-                              "thumbnail": movie.thumbnail if movie.thumbnail else "",
+                              "thumbnail": str(movie.thumbnail.url) if movie.thumbnail else "",
                               })
     return Response(movies_detail)
 
@@ -50,5 +50,5 @@ def create_movie(request):
         "title": movie.title,
         "description": movie.description,
         "cinema": movie.cinema,
-        "thumbnail":  movie.thumbnail.url if movie.thumbnail else ""
+        "thumbnail":  str(movie.thumbnail.url) if movie.thumbnail else ""
     })
